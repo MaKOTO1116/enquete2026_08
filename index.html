@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>あなたと、入間のこれから。</title>
+  <meta name="description" content="島根県雲南市掛合町入間を知り、高校生が実施するアンケートに参加するための地域紹介ページです。" />
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --paper: #fffdf7;
+      --ink: #2c2416;
+      --brown: #5c4a2a;
+      --green: #2d5a1b;
+      --lightgreen: #7cb342;
+      --pale: #edf3e6;
+      --line: #ddd5c0
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.75
+    }
+
+    img {
+      display: block;
+      width: 100%
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: auto
+    }
+
+    .section {
+      padding: 80px 20px
+    }
+
+    .label {
+      display: block;
+      color: var(--lightgreen);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 10px
+    }
+
+    .title {
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.4;
+      margin: 0 0 22px
+    }
+
+    .muted {
+      color: var(--brown)
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .2s
+    }
+
+    .btn-main {
+      background: var(--green);
+      color: #fff;
+      box-shadow: 0 8px 20px #0002
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px);
+      background: #1e3e12
+    }
+
+    .btn-light {
+      background: var(--lightgreen);
+      color: #fff
+    }
+
+    .btn-outline {
+      border: 2px solid var(--green);
+      color: var(--green)
+    }
+
+    .btn-insta {
+      border: 2px solid #e1306c;
+      color: #e1306c
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      background: #3a5a2a;
+      overflow: hidden
+    }
+
+    .hero-bg,
+    .final-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .hero-bg {
+      opacity: .8
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(#0005, #0004, #000a)
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: 70px 20px
+    }
+
+    .hero small {
+      letter-spacing: .28em
+    }
+
+    .hero h1 {
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.28;
+      margin: 28px 0
+    }
+
+    .hero p {
+      margin: 8px 0
+    }
+
+    .hero .btn {
+      margin-top: 28px;
+      font-size: 18px
+    }
+
+    .photos {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 14px;
+      margin: 35px 0
+    }
+
+    .photos-main {
+      height: 420px
+    }
+
+    .photos-side {
+      display: grid;
+      gap: 14px
+    }
+
+    .photos-side img {
+      height: 203px
+    }
+
+    .photo {
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px
+    }
+
+    .quote {
+      max-width: 680px;
+      margin: auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      text-align: center
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center
+    }
+
+    .imagebox {
+      height: 460px;
+      border-radius: 24px;
+      overflow: hidden
+    }
+
+    .imagebox img {
+      height: 100%;
+      object-fit: cover
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden
+    }
+
+    .card img {
+      height: 220px;
+      object-fit: cover
+    }
+
+    .card-body {
+      padding: 24px
+    }
+
+    .card h3 {
+      color: var(--green);
+      margin: 0 0 8px
+    }
+
+    .message {
+      background: var(--pale)
+    }
+
+    .letter {
+      background: var(--paper);
+      border: 1px solid #c8d8b0;
+      border-radius: 22px;
+      padding: 28px
+    }
+
+    .survey {
+      background: var(--green);
+      color: #fff;
+      text-align: center
+    }
+
+    .survey .title {
+      font-size: clamp(34px, 5vw, 56px)
+    }
+
+    .survey p {
+      color: #c8e8a8
+    }
+
+    .qr {
+      width: 190px;
+      margin: 20px auto 0;
+      background: #fff;
+      padding: 12px;
+      border-radius: 18px
+    }
+
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 30px
+    }
+
+    .insta-grid img {
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 20px
+    }
+
+    .final {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      background: #3a5a2a;
+      overflow: hidden
+    }
+
+    .final-bg {
+      opacity: .72
+    }
+
+    .final .overlay {
+      background: linear-gradient(#0003, #0006, #000b)
+    }
+
+    .final-inner {
+      position: relative;
+      z-index: 2;
+      padding: 80px 20px
+    }
+
+    .final h2 {
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 1.6
+    }
+
+    .footer {
+      background: #1c3a10;
+      color: #ffffffa8;
+      text-align: center;
+      padding: 40px 20px
+    }
+
+    .footer strong {
+      color: #fff
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin: 18px 0
+    }
+
+    .note {
+      font-size: 12px;
+      opacity: .7
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: .7s
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(max-width:760px) {
+      .section {
+        padding: 64px 18px
+      }
+
+      .photos,
+      .two,
+      .cards {
+        grid-template-columns: 1fr
+      }
+
+      .photos-main {
+        height: 240px
+      }
+
+      .photos-side {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .photos-side img {
+        height: 160px
+      }
+
+      .imagebox {
+        height: 300px
+      }
+
+      .cards {
+        gap: 16px
+      }
+
+      .insta-grid {
+        gap: 8px
+      }
+
+      .hero-inner {
+        padding-top: 90px
+      }
+
+      .hero h1 {
+        font-size: 44px
+      }
+
+      .two {
+        gap: 32px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none
+      }
+
+      .btn {
+        transition: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <img class="hero-bg" src="img\DSCN1617-hp-2.jpg" alt="緑豊かな山あいの風景">
+    <div class="overlay"></div>
+    <div class="hero-inner">
+      <small>島根県 雲南市 掛合町 · 入間</small>
+      <h1>あなたの声が、<br>入間のこれからを<br>つくる。</h1>
+      <p>私たち高校生が、この地域のこれからを考えています。</p>
+      <p style="opacity:.75;font-size:14px">まずは、入間のことを少し知ってください。</p>
+      <a class="btn btn-main" href="https://forms.gle/Pk9ge7r3sQFLVH7FA" target="_blank" rel="noopener">アンケートに答える →</a>
+      <p class="note">みなさんの声を、これからの地域づくりに活かします。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal"><span class="label">About</span>
+        <h2 class="title">入間って、どんなところ？</h2>
+        <p class="muted">島根県雲南市掛合町にある、小さな山あいの地域です。<br>山や田んぼに囲まれた風景と、人との距離の近さが残っています。</p>
+      </div>
+      <div class="photos reveal"><img class="photo photos-main" src="img\DSCN1617-hp-2.jpg" alt="山と田んぼの風景">
+        <div class="photos-side"><img class="photo" src="img\04.jpg" alt="緑の中の家"><img class="photo" src="img\03.jpg"
+            alt="緑豊かな山"></div>
+      </div>
+      <div class="quote reveal"><strong>「便利な場所ではないかもしれない。<br>でも、ここにしかない景色や、<br>ここだから生まれる人とのつながりがあります。」</strong>
+        <p class="muted">一度来たら、誰かに会いにまた来たくなる。そんな場所を目指しています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--paper)">
+    <div class="wrap two">
+      <div class="imagebox reveal"><img src="img\05.jpg" alt="木造校舎を思わせる空間"></div>
+      <div class="reveal"><span class="label">Place</span>
+        <h2 class="title">地域の真ん中にある、<br>入間交流センター。</h2>
+        <p class="muted">入間交流センターは、旧入間小学校を活用した交流拠点です。</p>
+        <p class="muted">昔の教室の雰囲気が残る空間や、旧職員室を使ったダイニングなど、どこか懐かしい空気が残っています。</p>
+        <p class="muted">宿泊や地域体験などを通して、地域の人と地域外の人が出会う場所になっています。</p><a class="btn btn-outline"
+          href="http://www.iruma-ec.com/" target="_blank" rel="noopener">もっと入間を知る →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center"><span class="label">Features</span>
+        <h2 class="title">こんな入間があります。</h2>
+      </div>
+      <div class="cards">
+        <article class="card reveal"><img
+            src="https://images.unsplash.com/photo-1685676288529-ed5263bc5cb8?w=600&h=420&fit=crop&auto=format"
+            alt="自然の風景">
+          <div class="card-body">
+            <h3>自然の近くで暮らす</h3>
+            <p class="muted">山や田んぼ、川。季節の変化をすぐそばで感じることができます。</p>
+          </div>
+        </article>
+        <article class="card reveal"><img
+            src="https://images.unsplash.com/photo-1762698092740-093e448f0b44?w=600&h=420&fit=crop&auto=format"
+            alt="地域で過ごす人々">
+          <div class="card-body">
+            <h3>人との距離が近い</h3>
+            <p class="muted">地域に来た人も、いつの間にか顔見知りに。人とのつながりが、この地域の魅力です。</p>
+          </div>
+        </article>
+        <article class="card reveal"><img
+            src="https://images.unsplash.com/photo-1617721930761-42fe8e5efad0?w=600&h=420&fit=crop&auto=format"
+            alt="学校を思わせる木造空間">
+          <div class="card-body">
+            <h3>学校だった場所で出会う</h3>
+            <p class="muted">旧入間小学校を活用した交流センター。地域の人と、地域外から来る人が出会う場所です。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section message">
+    <div class="wrap two">
+      <div class="reveal"><span class="label">Message</span>
+        <h2 class="title">私たち高校生が、<br>入間について考えています。</h2>
+        <div class="letter">
+          <p>地域の未来について考える中で、私たちは「入間のことを知ってくれる人」「入間と関わってくれる人」をもっと増やしたいと考えました。</p>
+          <p>そのためには、私たちだけで考えるのではなく、いろいろな人の声を聞くことが大切だと思っています。</p>
+          <strong>入間を知っていた人も、今日初めて知った人も、ぜひあなたの考えを聞かせてください。</strong>
+        </div>
+      </div>
+      <div class="imagebox reveal"><img
+          src="https://images.unsplash.com/photo-1762698092939-a9caa55db2f8?w=700&h=520&fit=crop&auto=format"
+          alt="高校生の活動イメージ"></div>
+    </div>
+  </section>
+
+  <section class="section survey">
+    <div class="wrap" style="max-width:760px">
+      <div class="reveal"><span class="label">Survey</span>
+        <h2 class="title">あなたなら、<br>どんな地域に行ってみたいですか？</h2>
+        <p>あなたの声が、入間のこれからを考えるヒントになります。</p><a class="btn btn-light" href="https://forms.gle/Pk9ge7r3sQFLVH7FA"
+          target="_blank" rel="noopener">アンケートに答える →</a>
+        <p style="font-size:14px">⏱ 所要時間：約3分　　✏️ 高校生による地域プロジェクトです</p>
+        <div class="qr"><img src="survey-qr.png" alt="アンケートフォームへのQRコード"></div>
+        <p class="note">スマートフォンのカメラで読み取ってください</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--paper)">
+    <div class="wrap">
+      <div class="reveal"><span class="label">Instagram</span>
+        <h2 class="title">入間の日常、発信しています。</h2>
+        <p class="muted">イベントだけじゃない、普段の入間の風景や地域の様子もInstagramで紹介しています。</p><a class="btn btn-insta"
+          href="https://www.instagram.com/koryucenter.iruma" target="_blank" rel="noopener">Instagramを見る</a>
+      </div>
+      <div class="insta-grid reveal"><a href="https://www.instagram.com/koryucenter.iruma" target="_blank"><img
+            src="https://images.unsplash.com/photo-1613701753892-21d82c0d259f?w=480&h=480&fit=crop&auto=format"
+            alt="入間の日常イメージ"></a><a href="https://www.instagram.com/koryucenter.iruma" target="_blank"><img
+            src="https://images.unsplash.com/photo-1762698092939-a9caa55db2f8?w=480&h=480&fit=crop&auto=format"
+            alt="活動イメージ"></a><a href="https://www.instagram.com/koryucenter.iruma" target="_blank"><img
+            src="https://images.unsplash.com/photo-1762698092740-093e448f0b44?w=480&h=480&fit=crop&auto=format"
+            alt="地域交流イメージ"></a></div>
+    </div>
+  </section>
+
+  <section class="final"><img class="final-bg"
+      src="https://images.unsplash.com/photo-1780920395671-80b28c9a5886?w=1600&h=900&fit=crop&auto=format" alt="緑の山々">
+    <div class="overlay"></div>
+    <div class="final-inner reveal">
+      <h2>今日、入間を知ってくれたことも、<br>ひとつの「つながり」です。</h2>
+      <p>いつか入間で会えたら、うれしいです。</p><a class="btn btn-main" href="https://forms.gle/Pk9ge7r3sQFLVH7FA" target="_blank"
+        rel="noopener">アンケートに答える →</a>
+    </div>
+  </section>
+
+  <footer class="footer"><strong>島根県雲南市掛合町入間</strong>
+    <div class="footer-links"><a href="http://www.iruma-ec.com/" target="_blank">入間交流センター 公式WEB</a><a
+        href="https://www.instagram.com/koryucenter.iruma" target="_blank">Instagram</a></div>
+    <div class="note">高校生による入間アンケートプロジェクト</div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (!('IntersectionObserver' in window)) { el.classList.add('visible'); return; }
+      const ob = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ob.unobserve(e.target) } }), { threshold: .08 }); ob.observe(el);
+    });
+  </script>
+</body>
+
+</html>
